@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-12 9:32:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="fmall" name="com.fmall.pojo.PromotionStrategy" optimistic-lock="version" schema="dbo" table="promotionStrategy">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="promotionId" type="string">
+      <column length="20" name="promotionId" unique="true"/>
+    </property>
+    <property name="startDate" type="timestamp">
+      <column length="23" name="startDate" not-null="true"/>
+    </property>
+    <property name="endDate" type="timestamp">
+      <column length="23" name="endDate" not-null="true"/>
+    </property>
+    <property name="discount" type="double">
+      <column name="discount" not-null="true" precision="53" scale="0"/>
+    </property>
+    <property name="title" type="string">
+      <column name="title"/>
+    </property>
+    <property name="createTime" type="timestamp">
+      <column length="23" name="createTime"/>
+    </property>
+    <property name="updateTime" type="timestamp">
+      <column length="23" name="updateTime"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="promotionStrategyItems" table="promotionStrategyItem">
+      <key>
+        <column name="promotionId"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.PromotionStrategyItem"/>
+    </set>
+  </class>
+</hibernate-mapping>

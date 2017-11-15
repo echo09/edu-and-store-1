@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-12 9:32:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="fmall" name="com.fmall.pojo.Forder" optimistic-lock="version" schema="dbo" table="forder">
+    <id name="orderId" type="string">
+      <column length="30" name="orderId"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.fmall.pojo.Fuser" fetch="select" name="fuser">
+      <column length="50" name="ouid"/>
+    </many-to-one>
+    <property name="oaddress" type="string">
+      <column name="oaddress" not-null="true"/>
+    </property>
+    <property name="sendTime" type="timestamp">
+      <column length="23" name="sendTime"/>
+    </property>
+    <property name="endDate" type="timestamp">
+      <column length="23" name="endDate"/>
+    </property>
+    <property name="postage" type="int">
+      <column name="postage" not-null="true"/>
+    </property>
+    <property name="orderStatus" type="int">
+      <column name="orderStatus" not-null="true"/>
+    </property>
+    <property name="createTime" type="timestamp">
+      <column length="23" name="createTime"/>
+    </property>
+    <property name="updateTime" type="timestamp">
+      <column length="23" name="updateTime"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="orderItems" table="orderItem">
+      <key>
+        <column length="30" name="orderId" not-null="true"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.OrderItem"/>
+    </set>
+  </class>
+</hibernate-mapping>

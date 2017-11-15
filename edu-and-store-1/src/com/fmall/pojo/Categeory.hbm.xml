@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-12 9:32:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="fmall" name="com.fmall.pojo.Categeory" optimistic-lock="version" schema="dbo" table="categeory">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.fmall.pojo.Categeory" fetch="select" name="categeory">
+      <column name="belongTo"/>
+    </many-to-one>
+    <property name="categeoryName" type="string">
+      <column name="categeoryName" not-null="true"/>
+    </property>
+    <property name="createTime" type="timestamp">
+      <column length="23" name="createTime"/>
+    </property>
+    <property name="updateTime" type="timestamp">
+      <column length="23" name="updateTime"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="categeories" table="categeory">
+      <key>
+        <column name="belongTo"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.Categeory"/>
+    </set>
+  </class>
+</hibernate-mapping>

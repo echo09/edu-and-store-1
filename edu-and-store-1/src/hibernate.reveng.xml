@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="fmall" match-schema="dbo"/>
+  <table-filter match-name="orderItem"/>
+  <table-filter match-name="product"/>
+  <table-filter match-name="promotionStrategyItem"/>
+  <table-filter match-name="categeory"/>
+  <table-filter match-name="cart"/>
+  <table-filter match-name="forder"/>
+  <table-filter match-name="fuser"/>
+  <table-filter match-name="promotionStrategy"/>
+</hibernate-reverse-engineering>

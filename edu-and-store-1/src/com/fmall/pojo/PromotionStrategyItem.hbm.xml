@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-12 9:32:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="fmall" name="com.fmall.pojo.PromotionStrategyItem" optimistic-lock="version" schema="dbo" table="promotionStrategyItem">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.fmall.pojo.Product" fetch="select" name="product">
+      <column name="pid" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.fmall.pojo.PromotionStrategy" fetch="select" name="promotionStrategy">
+      <column name="promotionId"/>
+    </many-to-one>
+    <property name="createTime" type="timestamp">
+      <column length="23" name="createTime"/>
+    </property>
+    <property name="updateTime" type="timestamp">
+      <column length="23" name="updateTime"/>
+    </property>
+  </class>
+</hibernate-mapping>

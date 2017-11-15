@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-12 9:32:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="fmall" name="com.fmall.pojo.Product" optimistic-lock="version" schema="dbo" table="product">
+    <id name="pid" type="int">
+      <column name="pid"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column name="name" not-null="true"/>
+    </property>
+    <property name="subTitle" type="string">
+      <column name="subTitle"/>
+    </property>
+    <property name="price" type="big_decimal">
+      <column name="price" not-null="true" precision="20"/>
+    </property>
+    <property name="stock" type="java.lang.Integer">
+      <column name="stock"/>
+    </property>
+    <property name="sales" type="java.lang.Integer">
+      <column name="sales"/>
+    </property>
+    <property name="categoryId" type="java.lang.Integer">
+      <column name="categoryId"/>
+    </property>
+    <property name="mainImage" type="string">
+      <column length="100" name="mainImage"/>
+    </property>
+    <property name="subImages" type="string">
+      <column name="subImages"/>
+    </property>
+    <property name="pstatus" type="java.lang.Integer">
+      <column name="pstatus"/>
+    </property>
+    <property name="detail" type="string">
+      <column name="detail"/>
+    </property>
+    <property name="createTime" type="timestamp">
+      <column length="23" name="createTime"/>
+    </property>
+    <property name="updateTime" type="timestamp">
+      <column length="23" name="updateTime"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="promotionStrategyItems" table="promotionStrategyItem">
+      <key>
+        <column name="pid" not-null="true"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.PromotionStrategyItem"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="carts" table="cart">
+      <key>
+        <column name="pid" not-null="true"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.Cart"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="orderItems" table="orderItem">
+      <key>
+        <column name="pid" not-null="true"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.OrderItem"/>
+    </set>
+  </class>
+</hibernate-mapping>

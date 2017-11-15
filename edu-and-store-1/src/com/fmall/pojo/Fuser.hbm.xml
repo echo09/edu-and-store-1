@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-12 9:32:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="fmall" name="com.fmall.pojo.Fuser" optimistic-lock="version" schema="dbo" table="fuser">
+    <id name="fuid" type="string">
+      <column length="50" name="fuid"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nickname" type="string">
+      <column name="nickname"/>
+    </property>
+    <property name="password" type="string" not-null="true" >
+      <column length="30" name="password"/>
+    </property>
+    <property name="phone" type="string">
+      <column length="11" name="phone"/>
+    </property>
+    <property name="image" type="string">
+      <column length="100" name="image"/>
+    </property>
+    <property name="urole" type="int">
+      <column name="urole" not-null="true"/>
+    </property>
+    <property name="question" type="string">
+      <column name="question"/>
+    </property>
+    <property name="answer" type="string">
+      <column name="answer"/>
+    </property>
+    <property name="createTime" type="timestamp">
+      <column length="23" name="createTime"/>
+    </property>
+    <property name="updateTime" type="timestamp">
+      <column length="23" name="updateTime"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="forders" table="forder">
+      <key>
+        <column length="50" name="ouid"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.Forder"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="carts" table="cart">
+      <key>
+        <column length="50" name="cuid" not-null="true"/>
+      </key>
+      <one-to-many class="com.fmall.pojo.Cart"/>
+    </set>
+  </class>
+</hibernate-mapping>
